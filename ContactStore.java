@@ -1,4 +1,3 @@
-import java.util.List;
 import java.util.ArrayList;
 import java.util.List;
 /**
@@ -10,6 +9,30 @@ import java.util.List;
 public class ContactStore {
 	
 	//creating ArrayList
-	List<> contactList = new ArrayList();
+	List<ContactDetails> contactList = new ArrayList();
+/**
+ * This method adds contact into ArrayList
+ * 	
+ * @param contactDetails
+ * 
+ * @return No return
+ */
+	public void addContact(ContactDetails contactDetails) {
+		
+		contactList.add(contactDetails);
+	}
+/**
+ * This method prints all the contacts
+ * of ArrayList
+ * 
+ * @return No return	
+ */
+	public void printContact() {
+	
+		for(int i=0; i < contactList.size(); i++) {
+			
+			System.out.println(contactList.get(i));
+		}
+	}
 
 }
