@@ -15,7 +15,7 @@ public class AddressBook {
 	
 	static ContactStore contactStore = new ContactStore();
 	
-	static ContactDetails contactDetails = new ContactDetails();
+	// ContactDetails contactDetails = new ContactDetails();
 /**
  * This method takes contact details from user.
  * And add it using addContact() of ContactStore
@@ -24,6 +24,8 @@ public class AddressBook {
  */
 	public void addContact() {
 		
+		ContactDetails contactDetails = new ContactDetails();
+
 		//taking contact details 
 		System.out.println("*****Contact Details*****");
 		
@@ -74,6 +76,8 @@ public class AddressBook {
  */
 	public void editContact() {
 		
+		ContactDetails contactDetails = new ContactDetails();
+
 		System.out.println("Enter First Name of person to edit contact : ");
 		String firstName = sc.next();
 		//checking the contact is present or not
@@ -126,6 +130,30 @@ public class AddressBook {
 		}
 	}
 /**
+ * This method takes first name from user
+ * and check if the contact is present or not in AddressBook
+ * 
+ * If present in ArrayList then call deleteContact()
+ * which will remove it from ArrayList
+ * 
+ * @return No return	
+ */
+	public void deleteContact() {
+		
+		System.out.println("Enter First Name of Contact to Delete : ");
+		String first_name = sc.next();
+		
+		boolean isPresent = contactStore.checkContact(first_name);
+		
+		if(isPresent == true) {
+			
+			contactStore.deleteContact(first_name);
+		}
+		else {
+			System.out.println("No such contact in AddressBook");
+		}
+	}
+/**
  * This method display menu of operation
  * user can perform
  * And according to operation calling method
@@ -143,9 +171,10 @@ public class AddressBook {
 			System.out.println("*** Address Book System ***");
 			System.out.println("1. Add Contact");
 			System.out.println("2. Edit Contact");
-			System.out.println("3. View AddressBook");
-			System.out.println("4. Exit");
-			System.out.println("Enter ur option (1-4) :");
+			System.out.println("3. Delete Contact");
+			System.out.println("4. View AddressBook");
+			System.out.println("5. Exit");
+			System.out.println("Enter ur option (1-5) :");
 			int option = sc.nextInt();
 		
 			switch (option) {
@@ -161,10 +190,15 @@ public class AddressBook {
 				}
 				case 3: {
 				
-					contactStore.printContact();
+					addressBook.deleteContact();
 					break;
 				}
 				case 4: {
+					
+					contactStore.printContact();
+					break;
+				}
+				case 5: {
 				
 					flag = false;	//to exit loop
 					break;
@@ -186,7 +220,7 @@ public class AddressBook {
 	public static void main(String[] args) {
 		
 		System.out.println("Welcome to Address Book Management System");
-		
+				
 		addressBook.showMenu();
 			
 	}
