@@ -9,7 +9,9 @@ import java.util.List;
 public class ContactStore {
 	
 	//creating ArrayList
-	List<ContactDetails> contactList = new ArrayList();
+	List<ContactDetails> contactList = new ArrayList<ContactDetails>();
+	
+	static int i =0;
 /**
  * This method adds contact into ArrayList
  * 	
@@ -19,7 +21,8 @@ public class ContactStore {
  */
 	public void addContact(ContactDetails contactDetails) {
 		
-		contactList.add(contactDetails);
+		contactList.add(i, contactDetails);
+		i++;
 	}
 /**
  * This method takes first name as parameter
@@ -72,6 +75,25 @@ public class ContactStore {
 				
 			}
 		}		
+	}
+/**
+ * This method matches first name given by
+ * user with ArrayList element 
+ * Remove element present at that index
+ * 	
+ * @param first_Name
+ * 
+ * @return No return
+ */
+	public void deleteContact(String first_Name) {
+		
+		for(int i=0; i < contactList.size(); i++) {
+			
+			if(contactList.get(i).getFirst_Name().equals(first_Name)) {
+				//removing from ArrayList
+				contactList.remove(i);
+			}
+		}
 	}
 /**
  * This method prints all the contacts
