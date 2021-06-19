@@ -1,3 +1,4 @@
+import java.util.Scanner;
 /**
  * AddressBook --- Program for simulation of Address Book System
  * 
@@ -6,9 +7,61 @@
  *
  */
 public class AddressBook {
-
+	
+	Scanner sc = new Scanner(System.in);
 /**
- * Taking contact details form user
+ * This method takes contact details from user.
+ * And add it using addContact() of ContactStore
+ * 	
+ * @return No return
+ */	
+	public void addContact() {
+		
+		ContactDetails contactDetails = new ContactDetails();
+		
+		ContactStore contactStore = new ContactStore();
+		System.out.println("Welcome to Address Book Management System");
+		//taking contact details 
+		System.out.println("*****Contact Details*****");
+		
+		System.out.println("Enter First Name : ");
+		String first_name = sc.next();
+		contactDetails.setFirst_Name(first_name);	//passing value 
+				
+		System.out.println("Enter Last Name : ");
+		String last_name = sc.next();
+		contactDetails.setLast_Name(last_name);
+				
+		System.out.println("Enter Address : ");
+		String address = sc.next();
+		contactDetails.setAddress(address);
+				
+		System.out.println("Enter City : ");
+		String city = sc.next();
+		contactDetails.setCity(city);
+				
+		System.out.println("Enter State : ");
+		String state = sc.next();
+		contactDetails.setState(state);
+				
+		System.out.println("Enter Zip Code : ");
+		int zip_Code = sc.nextInt();
+		contactDetails.setZip_Code(zip_Code);
+				
+		System.out.println("Enter Mobile Number : ");
+		int mob_No = sc.nextInt();
+		contactDetails.setMob_No(mob_No);
+				
+		System.out.println("Enter Email Id : ");
+		String email = sc.next();
+		contactDetails.setEmail(email);
+		
+		//adding to ArrayList
+		contactStore.addContact(contactDetails);
+
+	}
+/**
+ * Calling addContact() method
  * 
  * @param args
  * 
@@ -16,34 +69,10 @@ public class AddressBook {
  */
 	public static void main(String[] args) {
 		
-		Scanner sc = new Scanner(System.in);
+		AddressBook addressBook = new AddressBook();
 		
-		System.out.println("Welcome to Address Book Management System");
-		//taking contact details 
-		System.out.println("*****Contact Details*****");
-		System.out.println("Enter First Name : ");
-		String first_name = sc.next();
-		
-		System.out.println("Enter Last Name : ");
-		String last_name = sc.next();
-		
-		System.out.println("Enter Address : ");
-		String address = sc.next();
-		
-		System.out.println("Enter City : ");
-		String city = sc.next();
-		
-		System.out.println("Enter State : ");
-		String state = sc.next();
-		
-		System.out.println("Enter Zip Code : ");
-		int zip_Code = sc.nextInt();
-		
-		System.out.println("Enter Mobile Number : ");
-		int mob_No = sc.nextInt();
-		
-		System.out.println("Enter Email Id : ");
-		String email = sc.next();
-		
+		addressBook.addContact();
+			
 	}
 }
+
